@@ -511,7 +511,6 @@ export async function getFollowedLiveRooms(): Promise<LiveRoom[]> {
   const res = await api.get(`${LIVE_BASE}/xlive/web-ucenter/v1/xfetter/FeedList`, {
     params: { page: 1, page_size: 10, platform: 'web' },
   });
-  console.log(res.data,123123)
   if (res.data?.code !== 0) {
     console.warn('getFollowedLiveRooms error:', res.data?.code, res.data?.message);
     return [];

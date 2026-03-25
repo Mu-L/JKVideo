@@ -23,11 +23,9 @@ export function FollowedLiveStrip() {
 
   useEffect(() => {
     if (!sessdata) return;
-    setTimeout(() => {
-      getFollowedLiveRooms()
-        .then(setRooms)
-        .catch(() => {});
-    }, 1000);
+    getFollowedLiveRooms()
+      .then(setRooms)
+      .catch(() => {});
   }, [sessdata]);
 
   if (!sessdata || rooms.length === 0) return null;
@@ -72,7 +70,7 @@ export function FollowedLiveStrip() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f4f4f4",
-    paddingHorizontal: 3,
+    paddingHorizontal: 4,
     paddingVertical: 8,
   },
   scrollContent: {
