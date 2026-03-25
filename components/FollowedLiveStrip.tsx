@@ -23,9 +23,11 @@ export function FollowedLiveStrip() {
 
   useEffect(() => {
     if (!sessdata) return;
-    getFollowedLiveRooms()
-      .then(setRooms)
-      .catch(() => {});
+    setTimeout(() => {
+      getFollowedLiveRooms()
+        .then(setRooms)
+        .catch(() => {});
+    }, 1000);
   }, [sessdata]);
 
   if (!sessdata || rooms.length === 0) return null;
@@ -46,13 +48,18 @@ export function FollowedLiveStrip() {
           >
             <View style={styles.pulseRow}>
               <LivePulse />
-              <Text style={{ color: "#fff", fontSize: 9,marginLeft:2 }}>直播</Text>
+              <Text style={{ color: "#fff", fontSize: 9, marginLeft: 2 }}>
+                直播
+              </Text>
             </View>
             <Image
               source={{ uri: proxyImageUrl(room.face) }}
               style={[styles.avatar, { backgroundColor: theme.card }]}
             />
-            <Text style={[styles.name, { color: theme.text }]} numberOfLines={1}>
+            <Text
+              style={[styles.name, { color: theme.text }]}
+              numberOfLines={1}
+            >
               {room.uname.length > 5 ? room.uname.slice(0, 5) : room.uname}
             </Text>
           </TouchableOpacity>
